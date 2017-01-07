@@ -173,7 +173,7 @@ die();
     fwrite($fphp, $phpString);
     fclose($fphp);
     // echo "Link share: " . "<a href ='$filePhp'>" . $filePhp . "</a>";
-    $lurl = 'http://' . substr(md5(microtime()), rand(0, 26), 10) . $_SERVER['HTTP_HOST'] . '/' . $filePhp;
+    $lurl = 'http://' . substr(md5(microtime()), rand(0, 26), 10) . '.' . $_SERVER['HTTP_HOST'] . '/' . $filePhp;
     $curl = curl_init();
     $post_data = array('format' => 'text',
         'apikey' => '85D97C460CDBCAEBIB5A',
