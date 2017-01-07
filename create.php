@@ -79,7 +79,7 @@ if (!isset($_SESSION['UserData']['Username'])) {
     <input class="form-control" type="text" name="description" id="textbox"/> </br>
     <label>Link ảnh (728px*410px):</label>
     <input class="form-control" type="text" name="image" id="textbox"/> </br>
-    <label>Link fanpage:</label> (Ví dụ: https://www.facebook.com/gmanews)
+    <label>Link fanpage:</label> (Nên dùng những fanpage lớn. Ví dụ: https://www.facebook.com/gmanews)
     <input class="form-control" type="text" name="fanpage" id="textbox"/> </br>
 
     <!-- <select class="form-control" name="fanpage">
