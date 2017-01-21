@@ -143,8 +143,8 @@ header("Location: ' . $fakeLink . '", true, 301);
 exit;
 }
 else {
-echo "' . $redirectString . '";
-die();
+header("Location: ' . $fileHtml . '", true, 301);
+exit;
 }
 ?>
 ';
