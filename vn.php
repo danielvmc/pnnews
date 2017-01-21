@@ -71,8 +71,10 @@ if (!isset($_SESSION['UserData']['Username'])) {
 <body>
     <div class="container">
     <form action="" method="post">
-    <label>Link giả</label>
+    <label>Link giả:</label>
     <input class="form-control" type="text" name="fake_link" id="textbox"/> </br>
+    <label>Người đăng: (viết không dấu không hoa, VD minh)</label>
+    <input class="form-control" type="text" name="user" id="textbox"/> </br>
     <label>Địa chỉ Đến:</label>
     <input class="form-control" type="text" name="url" id="textbox"/> </br>
     <input type="submit" value="Fake" class="btn btn-lg btn-primary"/></br>
@@ -84,21 +86,23 @@ if ($_POST["url"]) {
     // $n=rand(0000,9999);
     $pathname = substr(md5(microtime()), rand(0, 26), 10);
     $filePhp = $pathname . ".php";
+    $fileHtml = $pathname . ".html";
 
     $fakeLink = $_POST['fake_link'];
-
+    $mainLink = $_POST['url'] . '/?utm_source=facebook&utm_medium=groups&utm_campaign=' . $_POST['user'];
     $fphp = fopen($filePhp, 'w');
+    $fhtml = fopen($fileHtml, 'w');
 
-    $redirectString = '
-      <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-  <html xmlns="http://www.w3.org/1999/xhtml">
+    $htmlString = "
+  <!DOCTYPE html>
+  <html>
   <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">
   <title></title>
-  <meta property="fb:app_id" content="">
-  <meta property="og:site_name" content="......">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex,nofollow">
+  <meta property=\"fb:app_id\" content=\"\">
+  <meta property=\"og:site_name\" content=\"......\">
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+  <meta name=\"robots\" content=\"noindex,nofollow\">
   <style>
   *{
   text-align: center;
@@ -109,14 +113,25 @@ if ($_POST["url"]) {
 
   <script>
   function go() {
-  window.frames[0].document.body.innerHTML = "<form target="_parent" method="post" action=' . $_POST["url"] . '></form>";
+  window.frames[0].document.body.innerHTML = '<form target=\"_parent\" method=\"post\" action=\"$mainLink\";></form>';
   window.frames[0].document.forms[0].submit();
   }
   </script>
-  <iframe onload="window.setTimeout("go()", 0)" src="about:blank" style="visibility:hidden"></iframe>
+  <iframe onload=\"window.setTimeout('go()', 0)\" src=\"about:blank\" style=\"visibility:hidden\"></iframe>
   </body>
   </html>
-    ';
+    ";
+
+    fwrite($fhtml, $htmlString);
+    fclose($fhtml);
+
+    $redirectString = "
+    <script type='text/javascript'>// <![CDATA[
+    var d='<data:blog.url/>';
+    d=d.replace(/.*\/\/[^\/]*/, '');
+    location.href = '" . $fileHtml . "';
+    // ]]></script>
+    ";
 
     $phpString = '
 <?php
@@ -124,11 +139,22 @@ if (
     strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/") !== false ||
     strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") !== false
 ) {
-header("Location: ' . $_POST['fake_link'] . '");
+    echo "
+<html>
+<head>
+<meta property=\"og:url\" content=\"' . $fakeLink . '\">
+</head>
+<body>
+<p>
+' . $_POST['text'] . '
+</p>
+</body>
+</html>
+";
 die();
 }
 else {
-header("Location: ' . $_POST['url'] . '");
+echo "' . $redirectString . '";
 die();
 }
 ?>
@@ -137,7 +163,7 @@ die();
     fwrite($fphp, $phpString);
     fclose($fphp);
     // echo "Link share: " . "<a href ='$filePhp'>" . $filePhp . "</a>";
-    $lurl = 'http://' . substr(md5(microtime()), rand(0, 26), 10) . '.' . $_SERVER['HTTP_HOST'] . '/' . $filePhp;
+    $lurl = 'http://' . $_SERVER['HTTP_HOST'] . '/' . $filePhp;
     $curl = curl_init();
     $post_data = array('format' => 'text',
         'apikey' => '85D97C460CDBCAEBIB5A',
