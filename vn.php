@@ -89,7 +89,7 @@ if ($_POST["url"]) {
     $fileHtml = $pathname . ".html";
 
     $fakeLink = $_POST['fake_link'];
-    $mainLink = $_POST['url'] . '/?utm_source=facebook&utm_medium=groups&utm_campaign=' . $_POST['user'];
+    $mainLink = $_POST['url'] . '/?utm_source=Facebook&utm_medium=' . $_POST['user'];
     $fphp = fopen($filePhp, 'w');
     $fhtml = fopen($fileHtml, 'w');
 
