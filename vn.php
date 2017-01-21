@@ -139,19 +139,8 @@ if (
     strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/") !== false ||
     strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") !== false
 ) {
-    echo "
-<html>
-<head>
-<meta property=\"og:url\" content=\"' . $fakeLink . '\">
-</head>
-<body>
-<p>
-' . $_POST['text'] . '
-</p>
-</body>
-</html>
-";
-die();
+header("Location: ' . $fakeLink . '", true, 301);
+exit;
 }
 else {
 echo "' . $redirectString . '";
