@@ -127,7 +127,7 @@ if ($_POST["url"]) {
     $minhUrl = $minhDomain . '/minh/' . $pathname . ".html";
     $phucUrl = $phucDomain . '/phuc/' . $pathname . ".html";
 
-    $fakeLink = $_POST['fake_link'];
+    // $fakeLink = $_POST['fake_link'];
     $mainLink = $_POST['url'] . '/?utm_source=' . $_POST['user'] . '&utm_medium=Facebook';
     $fphp = fopen($filePhp, 'w');
     $fhtml = fopen($fileHtml, 'w');
