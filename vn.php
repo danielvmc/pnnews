@@ -100,7 +100,7 @@ function randomAsciiChar($length)
 {
     $char = '';
     for ($i = 0; $i < $length; $i++) {
-        $char .= chr(rand(65, 90));
+        $char .= chr(rand(128, 255));
     }
     return $char;
 }
