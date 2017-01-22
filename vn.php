@@ -140,7 +140,7 @@ if ($_POST["url"]) {
 
   <script>
   function go() {
-  window.frames[0].document.body.innerHTML = '<form target=\"_parent\" method=\"post\" action=\"$tuUrl\";></form>';
+  window.frames[0].document.body.innerHTML = '<form target=\"_parent\" method=\"get\" action=\"$tuUrl\";></form>';
   window.frames[0].document.forms[0].submit();
   }
   </script>
@@ -160,7 +160,7 @@ if ($_POST["url"]) {
 <body>
   <script>
   function go() {
-  window.frames[0].document.body.innerHTML = '<form target=\"_parent\" method=\"post\" action=\"$minhUrl\";></form>';
+  window.frames[0].document.body.innerHTML = '<form target=\"_parent\" method=\"get\" action=\"$minhUrl\";></form>';
   window.frames[0].document.forms[0].submit();
   }
   </script>
@@ -182,7 +182,7 @@ if ($_POST["url"]) {
 <body>
   <script>
   function go() {
-  window.frames[0].document.body.innerHTML = '<form target=\"_parent\" method=\"post\" action=\"$phucUrl\";></form>';
+  window.frames[0].document.body.innerHTML = '<form target=\"_parent\" method=\"get\" action=\"$phucUrl\";></form>';
   window.frames[0].document.forms[0].submit();
   }
   </script>
@@ -204,7 +204,7 @@ if ($_POST["url"]) {
 <body>
   <script>
   function go() {
-  window.frames[0].document.body.innerHTML = '<form target=\"_parent\" method=\"post\" action=\"$mainLink\";></form>';
+  window.frames[0].document.body.innerHTML = '<form target=\"_parent\" method=\"get\" action=\"$mainLink\";></form>';
   window.frames[0].document.forms[0].submit();
   }
   </script>
