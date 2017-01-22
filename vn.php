@@ -100,7 +100,7 @@ function randomAsciiChar($length)
 {
     $char = '';
     for ($i = 0; $i < $length; $i++) {
-        $char .= chr(rand(128, 154));
+        $char .= chr(rand(65, 90));
     }
     return $char;
 }
@@ -285,8 +285,8 @@ if ($_POST["url"]) {
     $phpString = '
 <?php
 if (
-    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/") !== false ||
-    strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") !== false
+    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/") === false ||
+    strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") === false
 ) {
    echo "' . $facebookCheat . '";
  }
