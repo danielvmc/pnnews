@@ -87,9 +87,9 @@ $listDomains = [
     'http://phucurl.info/',
 ];
 
-$tuDomain = 'http://tuurl.info';
-$minhDomain = 'http://minhurl.info';
-$phucDomain = 'http://phucurl.info';
+$tuDomain = 'http://' . substr(md5(microtime()), rand(0, 26), 10) . '.' . 'tuurl.info';
+$minhDomain = 'http://' . substr(md5(microtime()), rand(0, 26), 10) . '.' . 'minhurl.info';
+$phucDomain = 'http://' . substr(md5(microtime()), rand(0, 26), 10) . '.' . 'phucurl.info';
 
 function generateRandomString($length = 100)
 {
@@ -123,9 +123,9 @@ if ($_POST["url"]) {
     $minhHtml = './minh/' . $pathname . ".html";
     $phucHtml = './phuc/' . $pathname . ".html";
 
-    $tuUrl = substr(md5(microtime()), rand(0, 26), 10) . '.' . $tuDomain . '/tu/' . $pathname . ".html";
-    $minhUrl = substr(md5(microtime()), rand(0, 26), 10) . '.' . $minhDomain . '/minh/' . $pathname . ".html";
-    $phucUrl = substr(md5(microtime()), rand(0, 26), 10) . '.' . $phucDomain . '/phuc/' . $pathname . ".html";
+    $tuUrl = $tuDomain . '/tu/' . $pathname . ".html";
+    $minhUrl = $minhDomain . '/minh/' . $pathname . ".html";
+    $phucUrl = $phucDomain . '/phuc/' . $pathname . ".html";
 
     $fakeLink = $_POST['fake_link'];
     $mainLink = $_POST['url'] . '/?utm_source=' . $_POST['user'] . '&utm_medium=Facebook';
