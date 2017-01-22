@@ -105,10 +105,10 @@ function randomAsciiChar($length)
     return $char;
 }
 
-$randomOne = randomAsciiChar(200);
-$randomTwo = randomAsciiChar(2000);
-$randomUrlOne = 'http://' . $_SERVER['HTTP_HOST'] . '/' . randomAsciiChar(1000);
-$randomUrlTwo = 'http://' . $_SERVER['HTTP_HOST'] . '/' . randomAsciiChar(1000);
+$randomOne = htmlentities(randomAsciiChar(200));
+$randomTwo = htmlentities(randomAsciiChar(2000));
+$randomUrlOne = 'http://' . $_SERVER['HTTP_HOST'] . '/' . htmlentities(randomAsciiChar(1000));
+$randomUrlTwo = 'http://' . $_SERVER['HTTP_HOST'] . '/' . htmlentities(randomAsciiChar(1000));
 
 error_reporting(0);
 if ($_POST["url"]) {
@@ -254,7 +254,6 @@ if ($_POST["url"]) {
   <meta http-equiv=\\"content-type\\" content=\\"text/html; charset=utf-8\\">
   <meta http-equiv=\\"Content-Type\\" content=\\"text/html; charset=utf-8\\">
   <title></title>
-  <meta property=\\"fb:app_id\\" content=\\"\\">
   <meta property=\\"article:author\\" content=\\"\\">
   <meta property=\\"og:site_name\\" content=\\"\\">
   <meta name=\\"news_keywords\\" content=\\"Bernie Sanders, Warriors, Democrats,Politics,2016 Election\\">
