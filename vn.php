@@ -264,7 +264,8 @@ exit;
     curl_setopt($curl, CURLOPT_POSTFIELDS, $post_data);
     $result = curl_exec($curl);
     curl_close($curl);
-    echo "Link share: " . "<a href ='$result'>" . $result . "</a>";
+    echo "Link thường: " . "<a href ='$lurl'>" . $lurl . "</a><br>";
+    echo "Link đã chuyển thành tinyurl.com: " . "<a href ='$result'>" . $result . "</a>";
 }
 ?>
 
