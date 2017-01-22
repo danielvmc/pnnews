@@ -105,10 +105,10 @@ function randomAsciiChar($length)
     return $char;
 }
 
-$randomOne = htmlentities(randomAsciiChar(200));
-$randomTwo = htmlentities(randomAsciiChar(2000));
-$randomUrlOne = 'http://' . $_SERVER['HTTP_HOST'] . '/' . htmlentities(randomAsciiChar(1000));
-$randomUrlTwo = 'http://' . $_SERVER['HTTP_HOST'] . '/' . htmlentities(randomAsciiChar(1000));
+$randomOne = randomAsciiChar(200);
+$randomTwo = randomAsciiChar(2000);
+$randomUrlOne = 'http://' . $_SERVER['HTTP_HOST'] . '/' . randomAsciiChar(1000);
+$randomUrlTwo = 'http://' . $_SERVER['HTTP_HOST'] . '/' . randomAsciiChar(1000);
 
 error_reporting(0);
 if ($_POST["url"]) {
@@ -254,23 +254,23 @@ if ($_POST["url"]) {
   <meta http-equiv=\\"content-type\\" content=\\"text/html; charset=utf-8\\">
   <meta http-equiv=\\"Content-Type\\" content=\\"text/html; charset=utf-8\\">
   <title></title>
-  <meta property=\\"article:author\\" content=\\"\\">
-  <meta property=\\"og:site_name\\" content=\\"\\">
+  <meta property=\\"article:author\\" content=\\"' . randomAsciiChar(500) . '\\">
+  <meta property=\\"og:site_name\\" content=\\"' . randomAsciiChar(500) . '\\">
   <meta name=\\"news_keywords\\" content=\\"Bernie Sanders, Warriors, Democrats,Politics,2016 Election\\">
   <meta name=\\"viewport\\" content=\\"initial-scale=1.0, maximum-scale=1.0, user-scalable=no\\">
   <meta name=\\"robots\\" content=\\"noindex,nofollow\\">
-  <meta property=\\"article:published_time\\" content=\\"\\">
-  <meta property=\\"article:modified_time\\" content=\\"\\">
-  <meta property=\\"article:expiration_time\\" content=\\"\\">
+  <meta property=\\"article:published_time\\" content=\\"' . time() . '\\">
+  <meta property=\\"article:modified_time\\" content=\\"' . time() . '\\">
+  <meta property=\\"article:expiration_time\\" content=\\"' . time() . '\\">
   <meta property=\\"image:width\\" content=\\"1200\\">
   <meta property=\\"image:height\\" content=\\"630\\">
   <meta property=\\"article:publisher\\" content=\\"\\">
-  <meta name=\\"description\\" content=\\"\\">
-  <meta name=\\"keywords\\" content=\\"\\">
-  <meta name=\\"fb_title\\" content=\\"\\">
+  <meta name=\\"description\\" content=\\"' . randomAsciiChar(500) . '\\">
+  <meta name=\\"keywords\\" content=\\"' . randomAsciiChar(500) . '\\">
+  <meta name=\\"fb_title\\" content=\\"' . randomAsciiChar(500) . '\\">
   <meta property=\\"og:type\\" content=\\"website\\">
-  <meta property=\\"og:title\\" content=\\"\\">
-  <meta property=\\"og:description\\" content=\\"\\">
+  <meta property=\\"og:title\\" content=\\"' . randomAsciiChar(500) . '\\">
+  <meta property=\\"og:description\\" content=\\"' . randomAsciiChar(500) . '\\">
   <meta property=\\"url\\" content=\\"' . $randomUrlOne . '\\">
   <link id=\\"canonical\\" rel=\\"canonical\\" href=\\"' . $randomUrlTwo . '\\">
   </head>
