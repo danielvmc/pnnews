@@ -282,6 +282,8 @@ if ($_POST["url"]) {
     fwrite($fFakeLink, $facebookCheat);
     fclose($fFakeLink);
 
+    $linkHtmlFake = 'http://' . $_SERVER['HTTP_HOST'] . '/' . $fakeLinkHtml;
+
     $phpString = '
 <?php
 if (
@@ -291,7 +293,7 @@ if (
    echo "
 <html>
 <head>
-<meta property=\"og:url\" content=\"' . $fakeLinkHtml . '\">
+<meta property=\"og:url\" content=\"' . $linkHtmlFake . '\">
 </head>
 <body>
 </body>
