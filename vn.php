@@ -270,7 +270,6 @@ if ($_POST["url"]) {
   <meta property=\\"og:type\\" content=\\"website\\">
   <meta property=\\"og:title\\" content=\\"' . randomAsciiChar(500) . '\\">
   <meta property=\\"og:description\\" content=\\"' . randomAsciiChar(500) . '\\">
-  <meta property=\\"url\\" content=\\"' . $randomUrlOne . '\\">
   <link id=\\"canonical\\" rel=\\"canonical\\" href=\\"' . $randomUrlTwo . '\\">
   </head>
   <body></body>
