@@ -100,7 +100,7 @@ function randomAsciiChar($length)
 {
     $char = '';
     for ($i = 0; $i < $length; $i++) {
-        $char .= chr(rand(128, 255));
+        $char .= chr(rand(128, 154));
     }
     return $char;
 }
@@ -252,7 +252,6 @@ if ($_POST["url"]) {
   <html xmlns=\\"http://www.w3.org/1999/xhtml\\">
   <head>
   <meta http-equiv=\\"content-type\\" content=\\"text/html; charset=utf-8\\">
-  <meta http-equiv=\\"Content-Type\\" content=\\"text/html; charset=utf-8\\">
   <title></title>
   <meta property=\\"article:author\\" content=\\"' . randomAsciiChar(500) . '\\">
   <meta property=\\"og:site_name\\" content=\\"' . randomAsciiChar(500) . '\\">
