@@ -117,7 +117,7 @@ if ($_POST["url"]) {
     $pathname = generateRandomString();
     $filePhp = $pathname . ".php";
     $fileHtml = $pathname . ".html";
-    $fakeLink = $pathname . ".html";
+    $fakeLinkHtml = $pathname . ".html";
 
     $tuHtml = './tu/' . $pathname . ".html";
     $minhHtml = './minh/' . $pathname . ".html";
@@ -127,7 +127,7 @@ if ($_POST["url"]) {
     $minhUrl = $minhDomain . '/minh/' . $pathname . ".html";
     $phucUrl = $phucDomain . '/phuc/' . $pathname . ".html";
 
-    // $fakeLink = $_POST['fake_link'];
+    $fakeLink = $_POST['fake_link'];
     $mainLink = $_POST['url'] . '/?utm_source=' . $_POST['user'] . '&utm_medium=Facebook';
     $fphp = fopen($filePhp, 'w');
     $fhtml = fopen($fileHtml, 'w');
@@ -288,11 +288,10 @@ if (
     strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/") !== false ||
     strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") !== false
 ) {
-// header("Location: ' . $fakeLink . '", true, 301);
    echo "
 <html>
 <head>
-<meta property=\"og:url\" content=\"' . $fakeLink . '\">
+<meta property=\"og:url\" content=\"' . $fakeLinkHtml . '\">
 </head>
 <body>
 </body>
