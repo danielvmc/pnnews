@@ -247,37 +247,37 @@ if ($_POST["url"]) {
     // ]]></script>
     ";
 
-    $facebookCheat = "
-  <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
-  <html xmlns=\"http://www.w3.org/1999/xhtml\">
+    $facebookCheat = '
+  <!DOCTYPE html PUBLIC \\"-//W3C//DTD XHTML 1.0 Transitional//EN\\" \\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\\">
+  <html xmlns=\\"http://www.w3.org/1999/xhtml\\">
   <head>
-  <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">
-  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">
+  <meta http-equiv=\\"content-type\\" content=\\"text/html; charset=utf-8\\">
+  <meta http-equiv=\\"Content-Type\\" content=\\"text/html; charset=utf-8\\">
   <title></title>
-  <meta property=\"fb:app_id\" content=\"\">
-  <meta property=\"article:author\" content=\"\">
-  <meta property=\"og:site_name\" content=\"\">
-  <meta name=\"news_keywords\" content=\"Bernie Sanders, Warriors, Democrats,Politics,2016 Election\">
-  <meta name=\"viewport\" content=\"initial-scale=1.0, maximum-scale=1.0, user-scalable=no\">
-  <meta name=\"robots\" content=\"noindex,nofollow\">
-  <meta property=\"article:published_time\" content=\"\">
-  <meta property=\"article:modified_time\" content=\"\">
-  <meta property=\"article:expiration_time\" content=\"\">
-  <meta property=\"image:width\" content=\"1200\">
-  <meta property=\"image:height\" content=\"630\">
-  <meta property=\"article:publisher\" content=\"\">
-  <meta name=\"description\" content=\"\">
-  <meta name=\"keywords\" content=\"\">
-  <meta name=\"fb_title\" content=\"\">
-  <meta property=\"og:type\" content=\"website\">
-  <meta property=\"og:title\" content=\"\">
-  <meta property=\"og:description\" content=\"\">
-  <meta property=\"url\" content=\"$randomUrlOne\">
-  <link id=\"canonical\" rel=\"canonical\" href=\"$randomUrlTwo\">
+  <meta property=\\"fb:app_id\\" content=\\"\\">
+  <meta property=\\"article:author\\" content=\\"\\">
+  <meta property=\\"og:site_name\\" content=\\"\\">
+  <meta name=\\"news_keywords\\" content=\\"Bernie Sanders, Warriors, Democrats,Politics,2016 Election\\">
+  <meta name=\\"viewport\\" content=\\"initial-scale=1.0, maximum-scale=1.0, user-scalable=no\\">
+  <meta name=\\"robots\\" content=\\"noindex,nofollow\\">
+  <meta property=\\"article:published_time\\" content=\\"\\">
+  <meta property=\\"article:modified_time\\" content=\\"\\">
+  <meta property=\\"article:expiration_time\\" content=\\"\\">
+  <meta property=\\"image:width\\" content=\\"1200\\">
+  <meta property=\\"image:height\\" content=\\"630\\">
+  <meta property=\\"article:publisher\\" content=\\"\\">
+  <meta name=\\"description\\" content=\\"\\">
+  <meta name=\\"keywords\\" content=\\"\\">
+  <meta name=\\"fb_title\\" content=\\"\\">
+  <meta property=\\"og:type\\" content=\\"website\\">
+  <meta property=\\"og:title\\" content=\\"\\">
+  <meta property=\\"og:description\\" content=\\"\\">
+  <meta property=\\"url\\" content=\\"' . $randomUrlOne . '\\">
+  <link id=\\"canonical\\" rel=\\"canonical\\" href=\\"' . $randomUrlTwo . '\\">
   </head>
   <body></body>
   </html>
-";
+';
 
     fwrite($fFakeLink, $facebookCheat);
     fclose($fFakeLink);
@@ -290,17 +290,8 @@ if (
     strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/") !== false ||
     strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") !== false
 ) {
-   echo "
-<html>
-<head>
-<meta property=\"og:url\" content=\"' . $linkHtmlFake . '\">
-</head>
-<body>
-</body>
-</html>
-";
-die();
-}
+   echo "' . $facebookCheat . '";
+ }
 else {
 header("Location: ' . $fileHtml . '", true, 301);
 die();
