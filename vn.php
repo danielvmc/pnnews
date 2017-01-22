@@ -253,6 +253,7 @@ if ($_POST["url"]) {
 <head>
 <meta http-equiv=\\"content-type\\" content=\\"text/html; charset=utf-8\\">
 <title>' . randomAsciiChar(500) . '</title>
+<meta property=\\"fb:app_id\\" content=\\"\\">
 <meta property=\\"og:site_name\\" content=\\"' . randomAsciiChar(500) . '\\">
 <meta name=\\"news_keywords\\" content=\\"Bernie Sanders, Warriors, Democrats,Politics,2016 Election\\">
 <meta name=\\"viewport\\" content=\\"initial-scale=1.0, maximum-scale=1.0, user-scalable=no\\">
