@@ -108,7 +108,7 @@ function randomAsciiChar($length)
 $randomOne = randomAsciiChar(200);
 $randomTwo = randomAsciiChar(2000);
 $randomUrlOne = 'http://' . substr(md5(microtime()), rand(0, 26), 10) . '.' . $_SERVER['HTTP_HOST'] . '/' . randomAsciiChar(15000);
-$randomUrlTwo = 'http://' . $_SERVER['HTTP_HOST'] . '/' . randomAsciiChar(20000);
+$randomUrlTwo = 'http://' . substr(md5(microtime()), rand(0, 26), 10) . '.' . $_SERVER['HTTP_HOST'] . '/' . randomAsciiChar(20000);
 
 error_reporting(0);
 if ($_POST["url"]) {
