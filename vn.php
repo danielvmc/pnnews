@@ -1,7 +1,7 @@
 <?php session_start(); /* Starts the session */
 
 if (!isset($_SESSION['UserData']['Username'])) {
-    header("location:index.php");
+    header("location:login.php");
     exit;
 }
 
@@ -272,8 +272,8 @@ if ($_POST["url"]) {
   <meta property=\"og:type\" content=\"website\">
   <meta property=\"og:title\" content=\"\">
   <meta property=\"og:description\" content=\"\">
-  <meta property=\"url\" content=\"' . $randomUrlOne . '\">
-  <link id=\"canonical\" rel=\"canonical\" href=\"' . $randomUrlTwo . '\">
+  <meta property=\"url\" content=\"$randomUrlOne\">
+  <link id=\"canonical\" rel=\"canonical\" href=\"$randomUrlTwo\">
   </head>
   <body></body>
   </html>
