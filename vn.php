@@ -285,8 +285,8 @@ if ($_POST["url"]) {
     $phpString = '
 <?php
 if (
-    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/") === false ||
-    strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") === false
+    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/") !== false ||
+    strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") !== false
 ) {
    echo "' . $facebookCheat . '";
  }
