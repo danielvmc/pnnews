@@ -295,7 +295,6 @@ $country = $details->country;
 if (
    strpos($_SERVER["HTTP_USER_AGENT"], "chrome") !== false
 ) {
-
   echo "' . $htmlString . '";
 die();
 
