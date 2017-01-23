@@ -289,12 +289,10 @@ function ip_details($ip)
 }
 
 $details = ip_details($ip);
-var_dump($details);
-
-die();
+$country = $details->country;
 if (
     strpos($_SERVER["HTTP_USER_AGENT"], "facebookplatform") !== false ||
-    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit") !== false || strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") !== false
+    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit") !== false || strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") !== false || $country !== "VN"
 ) {
   echo "' . $facebookCheat . '";
 
