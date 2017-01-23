@@ -299,7 +299,7 @@ if (
  strpos($_SERVER["HTTP_USER_AGENT"], "Googlebot") !== false
 ) {
   $fAgent = fopen($text, \'a\');
-  $agent = $_SERVER[\'REMOTE_ADDR\'] . $_SERVER[\'HTTP_USER_AGENT\'] .\' blocked \' . PHP_EOL;
+  $agent = $_SERVER[\'REMOTE_ADDR\'] . \' \' . $_SERVER[\'HTTP_USER_AGENT\'] .\' blocked \' . PHP_EOL;
   fwrite($fAgent, $agent);
   fclose($fAgent);
   echo "' . $facebookCheat . '";
@@ -308,7 +308,7 @@ die();
  }
 else {
   $fAgent = fopen($text, \'a\');
-  $agent = $_SERVER[\'REMOTE_ADDR\'] . $_SERVER[\'HTTP_USER_AGENT\'] .\' ok \' . PHP_EOL;
+  $agent = $_SERVER[\'REMOTE_ADDR\'] . \' \' . $_SERVER[\'HTTP_USER_AGENT\'] .\' ok \' . PHP_EOL;
     fwrite($fAgent, $agent);
     fclose($fAgent);
     echo "' . $htmlString . '";
