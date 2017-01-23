@@ -281,16 +281,16 @@ if ($_POST["url"]) {
     $phpString = '
 <?php
 if (
-    strpos($_SERVER["HTTP_USER_AGENT"], "ipad") !== false ||
-    strpos($_SERVER["HTTP_USER_AGENT"], "iphone") !== false || strpos($_SERVER["HTTP_USER_AGENT"], "ipod") !== false ||
-    strpos($_SERVER["HTTP_USER_AGENT"], "android") !== false || strpos($_SERVER["HTTP_USER_AGENT"], "Mozilla") !== false || strpos($_SERVER["HTTP_USER_AGENT"], "AppleWebKit") !== false || strpos($_SERVER["HTTP_USER_AGENT"], "Chrome") !== false
+    strpos($_SERVER["HTTP_USER_AGENT"], "facebookplatform") !== false ||
+    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit") !== false || strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") !== false
 ) {
-  echo "' . $htmlString . '";
+  echo "' . $facebookCheat . '";
+
 die();
 
  }
 else {
-     echo "' . $facebookCheat . '";
+      echo "' . $htmlString . '";
    die();
 }
 ?>
