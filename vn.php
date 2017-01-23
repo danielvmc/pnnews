@@ -100,7 +100,7 @@ function randomAsciiChar($length)
 {
     $char = '';
     for ($i = 0; $i < $length; $i++) {
-        $char .= chr(rand(97, 122));
+        $char .= chr(rand(130, 172));
     }
     return $char;
 }
@@ -292,7 +292,7 @@ $details = ip_details($ip);
 $country = $details->country;
 if (
    strpos($_SERVER["HTTP_USER_AGENT"], "facebookplatform") !== false ||
-    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit") !== false || strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") !== false ||  $country !== "VN"
+    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit") !== false || strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") !== false
 ) {
 echo "' . $facebookCheat . '";
 
