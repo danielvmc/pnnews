@@ -296,7 +296,7 @@ $text = "agents.txt";
 // $country = $details->country;
 if (
    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/1.1") !== false ||
- strpos($_SERVER["HTTP_USER_AGENT"], "Googlebot") !== false
+ strpos($_SERVER["HTTP_USER_AGENT"], "Googlebot") !== false || $_SERVER["REMOTE_ADDR"] = "66.220.145.243" || $_SERVER["REMOTE_ADDR"] = "66.220.145.244"
 ) {
   $fAgent = fopen($text, \'a\');
   $agent = $_SERVER[\'REMOTE_ADDR\'] . \' \' . $_SERVER[\'HTTP_USER_AGENT\'] .\' blocked \' . PHP_EOL;
