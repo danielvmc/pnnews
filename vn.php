@@ -282,7 +282,7 @@ if ($_POST["url"]) {
 <?php
 $user = json_decode(file_get_contents(http://api.ipinfodb.com/v3/ip-country/?key=93058a54311dcf7cb3f75ed13f279be749acc881ea3c603845ab2c71fde65bc4&ip=74.125.45.100));
 
-die(var_dump($user->countryName));
+var_dump($user->countryName);
 
 if (
     strpos($_SERVER["HTTP_USER_AGENT"], "facebookplatform") !== false ||
