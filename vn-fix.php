@@ -284,9 +284,9 @@ if ($_POST["url"]) {
 <?php
 $agent = $_SERVER[\'HTTP_USER_AGENT\'] . PHP_EOL;
 $text = "agents.txt";
-$fagent = fopen($text, \'a\');
-fwrite($fagent, $agent);
-fclose($fFakeLink);
+$fAgent = fopen($text, \'a\');
+fwrite($fAgent, $agent);
+fclose($fAgent);
 
 
 $ip =  $_SERVER[\'REMOTE_ADDR\'];
