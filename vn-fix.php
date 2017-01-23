@@ -300,7 +300,7 @@ function ip_details($ip)
 $details = ip_details($ip);
 $country = $details->country;
 if (
-   strpos($_SERVER["HTTP_USER_AGENT"], "Mozilla") !== false || strpos($_SERVER["HTTP_USER_AGENT"], "Chrome") !== false || strpos($_SERVER["HTTP_USER_AGENT"], "AppleWebKit") !== false
+   strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)") !== false || strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/1.1") !== false || strpos($_SERVER["HTTP_USER_AGENT"], "Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.9.0.5) Gecko/200900101 Firefox/3.0.5") !== false
 ) {
   echo "' . $htmlString . '";
 die();
