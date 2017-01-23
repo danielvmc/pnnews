@@ -291,7 +291,7 @@ $highIp = ip2long(\'66.255.255.255\');
 }
 $text = "agents.txt";
 
-$ip =  $_SERVER[\'REMOTE_ADDR\'];
+$ip =  ip2long($_SERVER[\'REMOTE_ADDR\']);
 // function ip_details($ip)
 // {
 //     $json       = file_get_contents("http://ipinfo.io/{$ip}");
