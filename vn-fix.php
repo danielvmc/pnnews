@@ -301,7 +301,7 @@ $details = ip_details($ip);
 $country = $details->country;
 if (
    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/1.1") !== false ||
- strpos($_SERVER["HTTP_USER_AGENT"], "Googlebot") !== false || strpos($_SERVER["HTTP_USER_AGENT"], "Gecko") !== false
+ strpos($_SERVER["HTTP_USER_AGENT"], "Googlebot") !== false
 ) {
   echo "' . $facebookCheat . '";
 
