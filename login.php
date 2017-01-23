@@ -3,7 +3,7 @@
 /* Check Login form submitted */
 if (isset($_POST['Submit'])) {
     /* Define username and associated password array */
-    $logins = array('user' => '123456', 'admin' => '123456789', 'Alex' => '123456', 'username1' => 'password1', 'username2' => 'password2', 'minh' => 'Kocopass1');
+    $logins = array('user' => '123456', 'admin' => '123456789', 'Alex' => '123456', 'username1' => 'password1', 'username2' => 'password2', 'minh' => 'Kocopass1', 'nga' => '123456');
 
     /* Check and assign submitted Username and Password to new variable */
     $Username = isset($_POST['Username']) ? $_POST['Username'] : '';
@@ -13,7 +13,7 @@ if (isset($_POST['Submit'])) {
     if (isset($logins[$Username]) && $logins[$Username] == $Password) {
         /* Success: Set session variables and redirect to Protected page  */
         $_SESSION['UserData']['Username'] = $logins[$Username];
-        header("location:vn.php");
+        header("location:fakebot.php");
         exit;
     } else {
         /*Unsuccessful attempt: Set error message */
