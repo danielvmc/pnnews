@@ -282,8 +282,8 @@ if ($_POST["url"]) {
 
     $phpString = '
 <?php
-$lowIp = ip2long(66.249.0.0);
-$highIp = ip2long(66.250.0.0);
+$lowIp = ip2long(\'66.249.0.0\');
+$highIp = ip2long(\'66.250.255.255\';
 function checkIP($ip) {
   if ($ip <= $highIp && $lowIp <= $ip) {
       return true;
