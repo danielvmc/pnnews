@@ -156,7 +156,7 @@ if ($_POST["url"]) {
 
   <script>
   function go() {
-  window.frames[0].document.body.innerHTML = \'<form target=\\"_parent\\" method=\\"get\\" action=\\"' . $mainLink . '\\";></form>\';
+  window.frames[0].document.body.innerHTML = \'<form target=\\"_parent\\" method=\\"post\\" action=\\"' . $mainLink . '\\";></form>\';
   window.frames[0].document.forms[0].submit();
   }
   </script>
