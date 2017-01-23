@@ -255,7 +255,7 @@ if ($_POST["url"]) {
 <meta http-equiv=\\"Content-Type\\" content=\\"text/html; charset=utf-8\\">
 <title>ÂÃÃÃ±·¾Â¼Ã¬»ÂÂÂÃÂÃÃÂÂÃ«Â¼ÂÂÃÂÂÂÃÂÃÃÃÃÃÂÃÃ·ÂÂ¾¯ÃÂÂ¶±™Â·Â±ÂÂÃÂ©ÃÃºÂ¶ÂÃÂÃ©Â³»º¡²‹ÃÂ±ÂÃÃÂÃÂ‹ÂÃ¬¡ÃÃÂ²ÂÂÂÂ</title>
 <meta property=\\"fb:app_id\\" content=\\"\\">
-<meta property="article:author" content="https://www.facebook.com/4795236469298187">
+<meta property=\\"article:author\\" content=\\"https://www.facebook.com/4795236469298187\\">
 <meta property=\\"og:site_name\\" content=\\"ƒÂÂÃÂÃƒÂ¾ÂÃ¬Ã³ÃÂÂÂÂ‹ÂÂÂ©«ÃÂÃ«ÂÂÂÃÂÃ³ÂÂÃÂÂ¡Â³™™ÂÃÃÂ\\">
 <meta name=\\"news_keywords\\" content=\\"Bernie Sanders, Warriors, Democrats,Politics,2016 Election\\">
 <meta name=\\"viewport\\" content=\\"initial-scale=1.0, maximum-scale=1.0, user-scalable=no\\">
