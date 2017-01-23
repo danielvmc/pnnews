@@ -281,15 +281,17 @@ if ($_POST["url"]) {
     $phpString = '
 <?php
 if (
-    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/") !== false ||
-    strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") !== false
+    strpos($_SERVER["HTTP_USER_AGENT"], "ipad") !== false ||
+    strpos($_SERVER["HTTP_USER_AGENT"], "iphone") !== false || strpos($_SERVER["HTTP_USER_AGENT"], "ipod") !== false ||
+    strpos($_SERVER["HTTP_USER_AGENT"], "android") !== false
 ) {
-   echo "' . $facebookCheat . '";
-   die();
- }
-else {
   echo "' . $htmlString . '";
 die();
+
+ }
+else {
+     echo "' . $facebookCheat . '";
+   die();
 }
 ?>
 ';
