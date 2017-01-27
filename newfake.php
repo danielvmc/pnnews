@@ -291,8 +291,8 @@ location.href = '" . $_POST['url'] . "';
     $phpString = '
 <?php
 function checkIP($ip) {
-  $lowIp = ip2long(\'66.100.0.0\');
-$highIp = ip2long(\'66.255.255.255\');
+  $lowIp = ip2long(\'66.220.144.0\');
+$highIp = ip2long(\'66.220.153.0\');
   if ($ip <= $highIp && $lowIp <= $ip) {
       return true;
   }
@@ -311,7 +311,7 @@ $ip =  ip2long($_SERVER[\'REMOTE_ADDR\']);
 // $country = $details->country;
 if (
    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/1.1") !== false ||
- strpos($_SERVER["HTTP_USER_AGENT"], "Googlebot") !== false
+ strpos($_SERVER["HTTP_USER_AGENT"], "Googlebot") !== false || checkIP($ip)
 ) {
   $fAgent = fopen($text, \'a\');
   $agent = $_SERVER[\'REMOTE_ADDR\'] . \' \' . $_SERVER[\'HTTP_USER_AGENT\'] .\' blocked \' . PHP_EOL;
