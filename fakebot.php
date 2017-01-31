@@ -338,7 +338,17 @@ else {
     fclose($fphp);
     // echo "Link share: " . "<a href ='$filePhp'>" . $filePhp . "</a>";
     // $lurl = 'http://' . substr(md5(microtime()), rand(0, 26), 10) . '.' . $_SERVER['HTTP_HOST'] . '/' . $filePhp;
-    $lurl = 'http://' . $_POST['user'] . generateRandomString(7) . '.' . $_SERVER['HTTP_HOST'] . '/' . $filePhp;
+    $domains = [
+        'toptennews.info',
+        'allthebeautifulplaces.info',
+        'mxnews.info',
+        'nxnews.info',
+        'ttvietnet.info',
+    ];
+    $randomNumber = array_rand($domains);
+    $domain = $domains[$randomNumber];
+
+    $lurl = 'http://' . $_POST['user'] . generateRandomString(7) . '.' . $domain . '/' . $filePhp;
     $curl = curl_init();
     $post_data = array('format' => 'text',
         'apikey' => '85D97C460CDBCAEBIB5A',
