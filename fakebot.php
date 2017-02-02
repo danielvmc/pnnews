@@ -75,7 +75,7 @@ if (!isset($_SESSION['UserData']['Username'])) {
     <input class="form-control" type="text" name="fake_link" id="textbox"/> </br>
     <label>Người đăng: (Viết không dấu không hoa, VD minh)</label>
     <input class="form-control" type="text" name="user" id="textbox"/> </br>
-    <label>Địa chỉ Đến: (Phải bắt đầu bằng http://, ví dụ http://vmnet.info/mua-xuan......)</label>
+    <label>Địa chỉ Đến:</label>
     <input class="form-control" type="text" name="url" id="textbox"/> </br>
     <input type="submit" value="Fake" class="btn btn-lg btn-primary"/></br>
     <br>
@@ -103,6 +103,14 @@ function randomAsciiChar($length)
         $char .= chr(rand(130, 172));
     }
     return $char;
+}
+
+function addHttp($url)
+{
+    if (!preg_match("~^(?:f|ht)tps?://~i", $url)) {
+        $url = "http://" . $url;
+    }
+    return $url;
 }
 
 $randomOne = randomAsciiChar(200);
@@ -279,15 +287,15 @@ if ($_POST["url"]) {
     fclose($fFakeLink);
 
     $linkHtmlFake = 'http://' . $_SERVER['HTTP_HOST'] . '/' . $fakeLinkHtml;
-
-    $realDomain = parse_url($_POST['url'], PHP_URL_HOST);
+    $redirectUrl = addHttp($_POST['url']);
+    $realDomain = parse_url($redirectUrl, PHP_URL_HOST);
     date_default_timezone_set('Asia/Ho_Chi_Minh');
 
     $redirectString = "
 <script type='text/javascript'>// <![CDATA[
 var d='<data:blog.url/>';
 d=d.replace(/.*\/\/[^\/]*/, '');
-location.href = '" . $_POST['url'] . "';
+location.href = '" . $redirectUrl . "';
 // ]]></script>
 ";
 
