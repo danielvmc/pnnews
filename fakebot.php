@@ -372,6 +372,11 @@ else {
         $text .= file_get_contents($betray);
         file_put_contents($betray, $text);
     } else {
+        $work = "work.txt";
+        $time = date("d-m-Y h:i:s");
+        $text = "{$_POST['user']} đã tạo link về {$_POST['url']} vào lúc {$time} ok" . PHP_EOL;
+        $text .= file_get_contents($work);
+        file_put_contents($work, $text);
         echo "Link thường: " . "<a href ='$lurl'>" . $lurl . "</a><br>";
         echo "Link đã chuyển thành tinyurl.com: " . "<a href ='$result'>" . $result . "</a>";
     }
