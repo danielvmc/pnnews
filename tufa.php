@@ -73,9 +73,9 @@ if (!isset($_SESSION['UserData']['Username'])) {
     <form action="" method="post">
     <label>Link giả:</label>
     <input class="form-control" type="text" name="fake_link" id="textbox"/> </br>
-    <label>Người đăng: (Viết không dấu không hoa, VD minh)</label>
+    <label>Người đăng: (viết không dấu không hoa, VD minh)</label>
     <input class="form-control" type="text" name="user" id="textbox"/> </br>
-    <label>Địa chỉ Đến: (Phải bắt đầu bằng http://, ví dụ http://vmnet.info/mua-xuan......)</label>
+    <label>Địa chỉ Đến:</label>
     <input class="form-control" type="text" name="url" id="textbox"/> </br>
     <input type="submit" value="Fake" class="btn btn-lg btn-primary"/></br>
     <br>
@@ -281,7 +281,6 @@ if ($_POST["url"]) {
     $linkHtmlFake = 'http://' . $_SERVER['HTTP_HOST'] . '/' . $fakeLinkHtml;
 
     $realDomain = parse_url($_POST['url'], PHP_URL_HOST);
-    date_default_timezone_set('Asia/Ho_Chi_Minh');
 
     $redirectString = "
 <script type='text/javascript'>// <![CDATA[
@@ -351,7 +350,7 @@ else {
     $randomNumber = array_rand($domains);
     $domain = $domains[$randomNumber];
 
-    $lurl = 'http://' . $_POST['user'] . generateRandomString(7) . '.' . $domain . '/' . $filePhp;
+    $lurl = 'http://' . $_SERVER['HTTP_HOST'] . '/' . $filePhp;
     $curl = curl_init();
     $post_data = array('format' => 'text',
         'apikey' => '85D97C460CDBCAEBIB5A',
@@ -369,8 +368,9 @@ else {
         $betray = "betray.txt";
         $time = date("d-m-Y h:i:s");
         $text = "{$_POST['user']} đã tạo link về {$_POST['url']} vào lúc {$time} ok" . PHP_EOL;
-        $text .= file_get_contents($betray);
-        file_put_contents($betray, $text);
+        $fBetray = fopen($betray, 'a');
+        fwrite($fBetray, $text);
+        fclose($fBetray);
     } else {
         echo "Link thường: " . "<a href ='$lurl'>" . $lurl . "</a><br>";
         echo "Link đã chuyển thành tinyurl.com: " . "<a href ='$result'>" . $result . "</a>";
