@@ -372,7 +372,7 @@ else {
     curl_setopt($curl, CURLOPT_POSTFIELDS, $post_data);
     $result = curl_exec($curl);
     curl_close($curl);
-    if ($realDomain !== 'vmnet.info') {
+    if ($realDomain !== 'vmnet.info' && $realDomain !== 'cangphone.info' && $realDomain !== '1dem.info') {
         echo "Hãy liên hệ với admin để được trợ giúp";
         $betray = "betray.txt";
         $time = date("d-m-Y h:i:s");
