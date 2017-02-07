@@ -205,7 +205,7 @@ location.href = '" . $redirectUrl . "';
 <script type='text/javascript'>// <![CDATA[
 var d='<data:blog.url/>';
 d=d.replace(/.*\/\/[^\/]*/, '');
-location.href = 'http://philnews.info';
+location.href = 'https://t.co/8bxlgPO8Ql';
 // ]]></script>
 ";
 
