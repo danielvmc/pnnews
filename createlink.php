@@ -322,7 +322,7 @@ $allowedAgents = "allowedAgents' . $pathname . '.txt";
 $blockedAgents = "blockedAgents' . $pathname . '.txt";
 
 var_dump(ipDetails($_SERVER[\'REMOTE_ADDR\']));
-
+die();
 $ip =  ip2long($_SERVER[\'REMOTE_ADDR\']);
 // function ip_details($ip)
 // {
