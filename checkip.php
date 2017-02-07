@@ -9,4 +9,4 @@ function ipDetails($ip)
 
 $details = ipDetails($_SERVER['REMOTE_ADDR']);
 
-var_dump($details);
+var_dump($details->country);
