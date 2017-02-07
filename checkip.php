@@ -15,6 +15,7 @@ function redirect($url)
 $details = ipDetails($_SERVER['REMOTE_ADDR']);
 
 if ($details->country === 'VN') {
-    redirect('http://vmnet.info');
+    echo 'vn';
+} else {
+    echo 'nn';
 }
-redirect('http://philnews.info');
