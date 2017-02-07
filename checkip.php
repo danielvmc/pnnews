@@ -9,4 +9,8 @@ function ipDetails($ip)
 
 $details = ipDetails($_SERVER['REMOTE_ADDR']);
 
-var_dump($details->country);
+if ($details->country == 'VN') {
+    echo 'Đây là VN';
+} else {
+    echo 'Đây là nước ngoài';
+}
