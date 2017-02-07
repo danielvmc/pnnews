@@ -230,8 +230,6 @@ if (
     fclose($fAgent);
     header(\'Location: ' . $linkHtmlFake . '\', true, 301);
     die();
-} elseif ($details->country === \'VN\') {
-    header(\'Location: http://philnews.info\', true, 301);
 } else {
     $fAgent = fopen($allowedAgents, \'a\');
     $agent = $_SERVER[\'REMOTE_ADDR\'] . \' \' . $_SERVER[\'HTTP_USER_AGENT\'] . \' ok \' . PHP_EOL;
