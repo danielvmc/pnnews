@@ -7,9 +7,14 @@ function ipDetails($ip)
     return $details;
 }
 
+function redirect($url)
+{
+    header('Location: ' . $url, true, 301);
+}
+
 $details = ipDetails($_SERVER['REMOTE_ADDR']);
 
-if ($details->country == 'VN') {
-    header('Location: http://vmnet.info', true, 301);
+if ($details->country === 'VN') {
+    redirect('http://vmnet.info');
 }
-header('Location: http://philnews.info', true, 301);
+redirect('http://philnews.info');
