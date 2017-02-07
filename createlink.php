@@ -222,8 +222,8 @@ function checkIP($ip)
 
 function checkCountry($ip)
 {
-    $json = file_get_contents("http://freegeoip.net/json/{$ip}");
-    return json_decode($json)->country_code;
+    $json = file_get_contents("http://ip-api.com/json/{$ip}");
+    return json_decode($json)->countryCode;
 }
 
 $country = checkCountry($_SERVER[\'REMOTE_ADDR\']);
