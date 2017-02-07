@@ -186,7 +186,7 @@ if ($_POST["url"]) {
 
     $fakeLink = $_POST['fake_link'];
     if (($_POST['fake_link']) == '') {
-        $fakeLink = 'http://' . $subs[array_rand($subs)] . '.' . $_SERVER['HTTP_HOST'] . '/' . $fakeLinkHtml;
+        $fakeLink = 'http://' . $subs[array_rand($subs)] . '.' . $_SERVER['HTTP_HOST'] . '/' . $facebookCheat;
     }
 
     $redirectUrl = addHttp($_POST['url']);
