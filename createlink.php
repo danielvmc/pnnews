@@ -158,27 +158,27 @@ if ($_POST["url"]) {
     $randomUrlTwo = 'http://' . $subs[array_rand($subs)] . '.' . $_SERVER['HTTP_HOST'] . '/';
 
     $facebookCheat = '
-<!DOCTYPE html PUBLIC \\"-//W3C//DTD XHTML 1.0 Transitional//EN\\" \\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\\">
-<html xmlns=\\"http://www.w3.org/1999/xhtml\\">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv=\\"content-type\\" content=\\"text/html; charset=utf-8\\">
-<meta http-equiv=\\"Content-Type\\" content=\\"text/html; charset=utf-8\\">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>' . $title . '</title>
-<meta property=\\"fb:app_id\\" content=\\"\\">
-<meta property=\\"article:author\\" content=\\"https://www.facebook.com/4795236469298187\\">
-<meta property=\\"og:site_name\\" content=\\"' . $title . '\\">
-<meta name=\\"news_keywords\\" content=\\"Bernie Sanders, Warriors, Democrats,Politics,2016 Election\\">
-<meta name=\\"viewport\\" content=\\"initial-scale=1.0, maximum-scale=1.0, user-scalable=no\\">
-<meta name=\\"robots\\" content=\\"noindex,nofollow\\">
+<meta property="fb:app_id" content="">
+<meta property="article:author" content="https://www.facebook.com/4795236469298187">
+<meta property="og:site_name" content="' . $title . '">
+<meta name="news_keywords" content="Bernie Sanders, Warriors, Democrats,Politics,2016 Election">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="robots" content="noindex,nofollow">
 <meta property="og:image" content="' . $image . '">
-<meta property=\\"image:width\\" content=\\"1280\\">
-<meta property=\\"image:height\\" content=\\"720\\">
-<meta name=\\"description\\" content=\\"' . $description . '\\">
-<meta name=\\"keywords\\" content=\\"ÂÃÂÂÃÂÂ¬ÃÃÂÂ©ÃÃÂÂÃÂ‹ÃÂÂÂ™ÃÂÃÃÂÂ²ÃÃ‹™¼ÃÂÃÂ¾ÃÂÂÃ¾ÂÃÂÂÂ»¼ÃÃÃ·ÃÃÂÃ½ÃÃ¯Ã¶ÃÂ³²ÂÂÂ¡ÂÃÂ¾ÂÂÃÂÂ‹ÃÃ«ÂÂÃÃÂÂÃÃ‹ÂÂ\\">
-<meta name=\\"fb_title\\" content=\\"' . $title . '\\">
-<meta property=\\"og:type\\" content=\\"website\\">
-<meta property=\\"og:title\\" content=\\"' . $title . '\\">
-<meta property=\\"og:description\\" content=\\"' . $description . '\\">
+<meta property="image:width" content="1280">
+<meta property="image:height" content="720">
+<meta name="description" content="' . $description . '">
+<meta name="keywords" content="ÂÃÂÂÃÂÂ¬ÃÃÂÂ©ÃÃÂÂÃÂ‹ÃÂÂÂ™ÃÂÃÃÂÂ²ÃÃ‹™¼ÃÂÃÂ¾ÃÂÂÃ¾ÂÃÂÂÂ»¼ÃÃÃ·ÃÃÂÃ½ÃÃ¯Ã¶ÃÂ³²ÂÂÂ¡ÂÃÂ¾ÂÂÃÂÂ‹ÃÃ«ÂÂÃÃÂÂÃÃ‹ÂÂ">
+<meta name="fb_title" content="' . $title . '">
+<meta property="og:type" content="website">
+<meta property="og:title" content="' . $title . '">
+<meta property="og:description" content="' . $description . '">
 </head>
 <body>  </body>
 </html>
