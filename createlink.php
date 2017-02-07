@@ -114,7 +114,7 @@ if ($_POST["url"]) {
     // $pathname = substr(md5(microtime()), rand(0, 26), 500);
     $pathname = generateRandomString();
     $filePhp = $pathname . ".php";
-    $fileHtml = $pathname . ".php";
+    $fileHtml = $pathname . ".html";
     $fphp = fopen($filePhp, 'w');
     $fhtml = fopen($fileHtml, 'w');
 
