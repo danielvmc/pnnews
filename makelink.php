@@ -250,7 +250,6 @@ if (
     fclose($fAgent);
     header(\'Location: ' . $redirectUrl . '\', true, 301);
     die();
-    }
 }
 
 ';
